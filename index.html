@@ -25,16 +25,19 @@
   },
   init: function () {
     const object3D = this.el.object3D
-    const name = this.data.name
+    name = this.data.name
     object3D.visible = false
     v = document.querySelector(this.data.video)
     const el = this.el
     
     const showImage = ({detail}) => {
-      if (name != detail.name) {
-        return
-      }
+      name = this.data.name
       v = document.querySelector(this.data.video)
+      if (name != detail.name) {
+        return
+       
+      }
+     
       v.play() 
       object3D.position.copy(detail.position)
       object3D.quaternion.copy(detail.rotation)
@@ -43,10 +46,12 @@
     }
 
     const hideImage = ({detail}) => {
+      name = this.data.name
       if (name != detail.name) {
         return
       }
       v.pause() 
+      
       object3D.visible = false
     }
 
@@ -55,43 +60,7 @@
     this.el.sceneEl.addEventListener('xrimagelost', hideImage)
   }
 })
-  AFRAME.registerComponent('target-video5', {
-  schema: {
-    name: { type: 'string' },
-    video: {type: 'string' },
-  },
-  init: function () {
-    const object3D = this.el.object3D
-    const name = this.data.name
-    object3D.visible = false
-    const v = document.querySelector(this.data.video)
-    const el = this.el
-    
-    const showImage = ({detail}) => {
-      if (name != detail.name) {
-        return
-      }
-    
-      v.play() 
-      object3D.position.copy(detail.position)
-      object3D.quaternion.copy(detail.rotation)
-      object3D.scale.set(detail.scale, detail.scale, detail.scale)
-      object3D.visible = true
-    }
-
-    const hideImage = ({detail}) => {
-      if (name != detail.name) {
-        return
-      }
-      v.pause() 
-      object3D.visible = false
-    }
-
-    this.el.sceneEl.addEventListener('xrimagefound', showImage)
-    this.el.sceneEl.addEventListener('xrimageupdated', showImage)
-    this.el.sceneEl.addEventListener('xrimagelost', hideImage)
-  }
-})
+ 
 
 
   </script>
@@ -107,9 +76,7 @@
     xrextras-runtime-error>
 
     <a-assets>
-      <!-- Credit to Poly by Google for the model: https://poly.google.com/view/dA5osnS0Rzj -->
-      
-      <img id="jelly-thumb" src="targets/arxrtv1.jpg">
+   
       <video
         
         id="alpha-video"
@@ -150,7 +117,7 @@
       geometry="primitive: plane; height: 1.6; width: .8;"  >
     </a-entity>
      <a-entity
-      target-video5="name: arxrtv5; video: #alpha-video5;"
+      target-video="name: arxrtv5; video: #alpha-video5;"
       material="shader: chromakey; src: #alpha-video; color: 0 0 0"
       geometry="primitive: plane; height: 1.6; width: .8;"  >
     </a-entity>
