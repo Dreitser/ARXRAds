@@ -31,9 +31,10 @@
     el = this.el
     
      const showImage = ({detail}) => {
-      name = this.data.name
-      v = document.querySelector(this.data.video)
+   
       if (name != detail.name) {
+         name = this.data.name
+         v = document.querySelector(this.data.video)
         return
        
       }
@@ -53,7 +54,7 @@
       
       v.pause()       
       object3D.visible = false
-      v = document.querySelector(this.data.video)
+
     }
 
     this.el.sceneEl.addEventListener('xrimagefound', showImage)
