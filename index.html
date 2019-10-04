@@ -71,7 +71,6 @@
       <!-- Credit to Poly by Google for the model: https://poly.google.com/view/dA5osnS0Rzj -->
       
       <img id="jelly-thumb" src="targets/arxrtv1.jpg">
-      
       <video
         
         id="alpha-video"
@@ -81,6 +80,17 @@
         crossorigin="anonymous"
         loop="true"
         src="MilaTrailer.mp4">
+      </video>
+      
+      <video
+        
+        id="alpha-video5"
+        muted
+        autoplay
+        playsinline
+        crossorigin="anonymous"
+        loop="true"
+        src="td.mp4">
       </video>
     </a-assets>
 
@@ -97,6 +107,7 @@
     <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
     <a-entity
       target-video="name: arxrtv1; video: #alpha-video;"
+      target-video="name: arxrtv5; video: #alpha-video5;" 
       material="shader: chromakey; src: #alpha-video; color: 0 0 0"
       geometry="primitive: plane; height: 1.6; width: .8;"  >
     </a-entity>
