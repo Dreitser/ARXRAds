@@ -29,12 +29,30 @@
     object3D.visible = false
     v = document.querySelector(this.data.video)
     el = this.el
-    
+     
+    const newImage = ({detail}) => {
+   
+      if (name != detail.name) {
+        object3D.visible = false
+        object3D = this.el.object3D
+        name = this.data.name
+        object3D.visible = false
+        v = document.querySelector(this.data.video)
+        el = this.el
+        
+        return
+      }
+     
+      v.play() 
+      object3D.position.copy(detail.position)
+      object3D.quaternion.copy(detail.rotation)
+      object3D.scale.set(detail.scale, detail.scale, detail.scale)
+      object3D.visible = true
+    }
      const showImage = ({detail}) => {
    
       if (name != detail.name) {
-         name = this.data.name
-         v = document.querySelector(this.data.video)
+       
         return
        
       }
@@ -57,7 +75,7 @@
 
     }
 
-    this.el.sceneEl.addEventListener('xrimagefound', showImage)
+    this.el.sceneEl.addEventListener('xrimagefound', newImage)
     this.el.sceneEl.addEventListener('xrimageupdated', showImage)
     this.el.sceneEl.addEventListener('xrimagelost', hideImage)
   }
