@@ -24,13 +24,13 @@
     video: {type: 'string' },
   },
   init: function () {
-    const object3D = this.el.object3D
+    object3D = this.el.object3D
     name = this.data.name
     object3D.visible = false
     v = document.querySelector(this.data.video)
-    const el = this.el
+    el = this.el
     
-    const showImage = ({detail}) => {
+     const showImage = ({detail}) => {
       name = this.data.name
       v = document.querySelector(this.data.video)
       if (name != detail.name) {
@@ -46,13 +46,14 @@
     }
 
     const hideImage = ({detail}) => {
-      name = this.data.name
+
       if (name != detail.name) {
         return
       }
-      v.pause() 
       
+      v.pause()       
       object3D.visible = false
+      v = document.querySelector(this.data.video)
     }
 
     this.el.sceneEl.addEventListener('xrimagefound', showImage)
@@ -118,7 +119,7 @@
     </a-entity>
      <a-entity
       target-video="name: arxrtv5; video: #alpha-video5;"
-      material="shader: chromakey; src: #alpha-video; color: 0 0 0"
+      material="shader: chromakey; src: #alpha-video5; color: 0 0 0"
       geometry="primitive: plane; height: 1.6; width: .8;"  >
     </a-entity>
     
