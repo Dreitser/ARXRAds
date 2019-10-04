@@ -34,6 +34,7 @@
       if (name != detail.name) {
         return
       }
+      v = document.querySelector(this.data.video)
       v.play() 
       object3D.position.copy(detail.position)
       object3D.quaternion.copy(detail.rotation)
