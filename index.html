@@ -1,3 +1,5 @@
+
+  
 <!doctype html>
 <html>
 
@@ -29,30 +31,12 @@
     object3D.visible = false
     v = document.querySelector(this.data.video)
     el = this.el
-     
-    const newImage = ({detail}) => {
-   
-      if (name != detail.name) {
-        object3D.visible = false
-        object3D = this.el.object3D
-        name = this.data.name
-        object3D.visible = false
-        v = document.querySelector(this.data.video)
-        el = this.el
-        
-        return
-      }
-     
-      v.play() 
-      object3D.position.copy(detail.position)
-      object3D.quaternion.copy(detail.rotation)
-      object3D.scale.set(detail.scale, detail.scale, detail.scale)
-      object3D.visible = true
-    }
+    
      const showImage = ({detail}) => {
    
       if (name != detail.name) {
-       
+         name = this.data.name
+         v = document.querySelector(this.data.video)
         return
        
       }
@@ -63,26 +47,20 @@
       object3D.scale.set(detail.scale, detail.scale, detail.scale)
       object3D.visible = true
     }
-
     const hideImage = ({detail}) => {
-
       if (name != detail.name) {
         return
       }
       
       v.pause()       
       object3D.visible = false
-
     }
-
-    this.el.sceneEl.addEventListener('xrimagefound', newImage)
+    this.el.sceneEl.addEventListener('xrimagefound', showImage)
     this.el.sceneEl.addEventListener('xrimageupdated', showImage)
     this.el.sceneEl.addEventListener('xrimagelost', hideImage)
   }
 })
  
-
-
   </script>
 </head>
 
@@ -105,7 +83,7 @@
         playsinline
         crossorigin="anonymous"
         loop="true"
-        src="https://arxrtv.com/MilaTrailer.mp4">
+        src="MilaTrailer.mp4">
       </video>
       
       <video
@@ -116,7 +94,7 @@
         playsinline
         crossorigin="anonymous"
         loop="true"
-        src="https://arxrtv.com/td.mp4">
+        src="td.mp4">
       </video>
     </a-assets>
 
@@ -150,3 +128,4 @@
 
 </body>
 </html>
+
