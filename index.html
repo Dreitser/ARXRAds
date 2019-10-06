@@ -116,7 +116,7 @@
         playsinline
         crossorigin="anonymous"
         loop="true"
-        src="td.mp4">
+        src="samsung.mp4">
       </video>
     </a-assets>
 
@@ -136,7 +136,11 @@
       material="shader: chromakey; src: #alpha-video; color: 0 1 0"
       geometry="primitive: plane; height: .480; width: .854;"  >
     </a-entity>
-     
+      <a-entity
+      target-video="name: arxrtv2; video: #alpha-video5;"
+      material="shader: chromakey; src: #alpha-video5; color: 0 1 0"
+      geometry="primitive: plane; height: .480; width: .854;"  >
+    </a-entity>
     
 
     <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
